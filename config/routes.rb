@@ -24,6 +24,9 @@ Rails.application.routes.draw do
   #   root to : "about#index"
   # end
   resources :about, only:[:index]
+  #resources :registration, only:[:index]
+  get 'sign_up', to: "users#new"
+  post 'sign_up', to: "users#create"
   # get 'about/' => "about#index"
 
   # The priority is based upon order of creation: first created -> highest priority.

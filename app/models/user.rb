@@ -1,12 +1,12 @@
 class User < ApplicationRecord
-  CONFIRMATION_TOKEN_EXPIRATION = 10.mintues
+  CONFIRMATION_TOKEN_EXPIRATION = 10.minutes
 
   has_secure_password
 
 
   before_save :downcase_email
 
-  validate :email, format: {with: URI::MailTo::EMAIL_REGEXP}, presence: true, uniqueness: true
+  validates :email, format: {with: URI::MailTo::EMAIL_REGEXP}, presence: true, uniqueness: true
 
 
   def confirm!
@@ -18,7 +18,7 @@ class User < ApplicationRecord
   end
 
   def generate_confirmation_token
-    signed_id expires_id: CONFIRMATION_TOKEN_EXPIRATION, purpose: : confirm_email
+    signed_id expires_id: CONFIRMATION_TOKEN_EXPIRATION, purpose: :confirm_email
   end
 
   def unconfirmed?
