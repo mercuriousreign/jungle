@@ -65,7 +65,7 @@
           My Cart (<%= cart.size %>) <% end %>
         </li>
         <% if session[:user_id] %>
-          <li>Sign as <%current_user.first_name%></li>
+          <li>Sign as <%=current_user.first_name%></li>
           <li><%= link_to "Logout", '/logout', class:"nav-link" %>
         <%else%>
           <li><%= link_to "Login", '/login', class:"nav-link" %>
