@@ -28,6 +28,10 @@ Rails.application.routes.draw do
   get 'sign_up', to: "users#new"
   post 'sign_up', to: "users#create"
   resources :confirmations, only: [:create, :edit, :new], param: :confirmation_token
+
+  post "login", to: "sessions#create"
+  delete "logout", to: "sessions#destroy"
+  get "login", to: "sessions#new"
   # get 'about/' => "about#index"
 
   # The priority is based upon order of creation: first created -> highest priority.
