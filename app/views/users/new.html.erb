@@ -1,5 +1,17 @@
-<%= form_with model:@user, url: sign_up_path do |form| %>
-  <%= render partial: "layouts/form_errors", locals: { object: form.object } %>
+<h1>Registration</h1>
+
+<%= form_for :user, url: sign_up_path do |form| %>
+  
+  <div>
+    <%= form.label :first_name %>
+    <%= form.text_field :first_name, required: true%>
+  </div>
+
+  <div>
+    <%= form.label :last_name %>
+    <%= form.text_field :last_name, required: true%>
+  </div>
+
   <div>
     <%= form.label :email %>
     <%= form.email_field :email, required: true%>
@@ -7,7 +19,7 @@
 
   <div>
     <%= form.label :password %>
-    <%= form.email_field :email, required: true %>
+    <%= form.password_field :password, required: true %>
   </div>
 
   <div>
