@@ -39,6 +39,29 @@ RSpec.describe User, type: :model do
   end
 
   describe '.authenticate_with_credentials' do
+    it "should return if valid email is in storage" do
+      user = User.authenticate_with_credentials("meerahale@someemail.com","12345")
+      expect(user).to eql(@user_good)
+    end
+
+    it "should return if valid even if email has spaces" do
+      @current_case = User.create(first_name:"Maria",last_name:"Hill", email:"     mariahill@someemail.com", password:"12345", password_confirmation: "12345")
+      @current_case.save
+
+      user = User.authenticate_with_credentials("     mariahill@someemail.com","12345")
+
+      expect(user).to eql(@current_case)
+    end
+
+    it "should return if valid email has different cases" do
+      @current_case2 = User.create(first_name:"Sebastian",last_name:"Hill", email:"sebastianHill@someemail.com", password:"12345", password_confirmation: "12345")
+      @current_case2.save
+
+      user2 = User.authenticate_with_credentials("sebastianHill@someemail.com","12345")
+
+      expect(user2).to eql(@current_case2)
+    end
+
   end
 
 end
