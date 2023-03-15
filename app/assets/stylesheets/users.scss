@@ -1,3 +1,12 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.reg_list{
+  margin-top: 5%;
+  margin-bottom: 50%;
+
+  &_item{
+    margin: 1%;
+  }
+}
